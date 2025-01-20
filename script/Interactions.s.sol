@@ -12,18 +12,14 @@ import {FundMe} from "src/FundMe.sol";
 contract fundFundMe is Script {
     uint256 constant SEND_VALUE = 0.01 ether;
 
-    function fundFundMe(address mostRecentDeployed) public {
+    function FundFundMe(address mostRecentDeployed) public {
         vm.startBroadcast();
         FundMe(payable(mostRecentDeployed)).fund{value: SEND_VALUE}();
         vm.stopBroadcast();
-        console.log("Funded FundMe with", SEND_VALUE);
     }
 
     function run() external {
-        address mostRecentDeployed = DevOpsTools.get_most_recent_deployment(
-            FundMe,
-            block.chainid
-        );
+        address mostRecentDeployed = DevOpsTools.get_most_recent_deployment(FundMe, block.chainid);
         fundFundMe(mostRecentDeployed);
     }
 }
