@@ -23,3 +23,5 @@ interact:; forge script script/InteractWithStuff.s.sol:InteractWithStuff --broad
 zktest :; foundryup-zksync && forge test --zksync && foundryup
 
 test :; forge test
+
+compile :; forge compile
